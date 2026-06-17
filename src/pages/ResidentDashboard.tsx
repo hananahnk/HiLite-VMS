@@ -30,8 +30,7 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
     try {
       const { data } = await api.get('/visitors');
       
-      // Strict filtering: Only use hostId. 
-      // Ensure user.id exists before filtering.
+     
       if (user && user.id) {
         const myVisitors = data.filter((v: any) => v.hostId === user.id);
         setVisitors(myVisitors);
@@ -47,7 +46,7 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
 
   const handleStatusChange = async (id: string, status: string) => {
   try {
-    // Simply update the status and refresh the data
+
     await api.patch(`/visitors/${id}`, { status });
     fetchMyVisitors();
   } catch (err) { 
@@ -65,14 +64,14 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
   };
 
   const handleEdit = (visitor: any) => {
-    setEditingVisitor(visitor); // Now this actually stores the data
+    setEditingVisitor(visitor); 
     setIsModalVisible(true);
   };
 
   const handleDelete = async (id: string) => {
     try {
       await api.delete(`/visitors/${id}`);
-      fetchMyVisitors(); // Refresh the list
+      fetchMyVisitors(); 
     } catch (err) {
       console.error("Failed to delete", err);
     }
@@ -93,7 +92,7 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
   }, [visitors, dateRange]);
 
   const kpis = useMemo(() => ({
-  total: { val: filteredVisitors.length, color: '#C69214' }, // Use .length here!
+  total: { val: filteredVisitors.length, color: '#C69214' }, 
   pending: { val: filteredVisitors.filter(v => v.status === 'pending').length, color: '#C69214' },
   approved: { val: filteredVisitors.filter(v => v.status === 'approved').length, color: '#C69214' },
   completed: { val: filteredVisitors.filter(v => v.status === 'completed').length, color: '#C69214' },
@@ -143,7 +142,7 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
             },
             
           ]}
-  // This helps keep it compact
+
           size="middle"
           />
         </div>
