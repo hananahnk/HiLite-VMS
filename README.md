@@ -25,7 +25,13 @@ A robust, role-based Visitor Management System designed to digitize community se
 
 ---
 
-## 🚀 Getting Started
+## Demo
+
+A full walkthrough of the application features and workflows can be viewed here: [[Link to Demo Video](https://drive.google.com/file/d/1Z6O-cX_91mz2c0fbSvf1qNvgVhRmGdvC/view?usp=sharing)]
+
+---
+
+## Getting Started
 
 ### 1. Installation
 
@@ -35,6 +41,7 @@ Clone the repository and install the project dependencies:
 git clone <repository-url>
 cd hi-lite-vms
 npm install
+
 ```
 
 ### 2. Running the Application
@@ -47,43 +54,40 @@ Open two separate terminal windows:
 
 ```bash
 npm run server
+
 ```
 
 This initializes the `json-server` on:
 
 ```text
 http://localhost:5000
+
 ```
 
 #### Terminal 2 (Frontend)
 
 ```bash
 npm run dev
+
 ```
 
-This launches the React development server.
-
-Open the displayed URL :
-
-```text
-http://localhost:3000
-```
-
-in your browser.
+This launches the React development server. Open the displayed URL in your browser.
 
 ---
 
 ## Architecture Overview
 
-The system employs a **Cascade Synchronization Pattern** to maintain referential integrity. When user profiles are modified, the application automatically synchronizes all associated historical records, ensuring that visitor history remains linked to the host regardless of account updates.
+The system employs a Cascade Synchronization Pattern to maintain referential integrity. When user profiles are modified, the application automatically synchronizes all associated historical records, ensuring that visitor history remains linked to the host regardless of account updates.
 
 ---
 
 ## Roles & Access
 
-| **Admin**    | Manage residents, monitor total site traffic, and oversee security logs. |
-| **Security** | Register new visitors and manage gate entry/exit logs.                   |
-| **Resident** | Approve/Reject visitor requests and view personal visitor history.       |
+| Role | Capabilities |
+| --- | --- |
+| **Admin** | Manage residents, monitor total site traffic, and oversee security logs. |
+| **Security** | Register new visitors and manage gate entry/exit logs. |
+| **Resident** | Approve/Reject visitor requests and view personal visitor history. |
 
 ---
 
@@ -91,7 +95,7 @@ The system employs a **Cascade Synchronization Pattern** to maintain referential
 
 ### ID-Based Relationship
 
-Refactored from name-based strings to `hostId` unique keys to prevent data "orphaning."
+Refactored from name-based strings to `hostId` unique keys to prevent data orphaning.
 
 ### State Management
 
@@ -120,5 +124,3 @@ Integrate WebSockets (Socket.io) to provide live updates when security enters a 
 ### Authentication
 
 Transitioning from mock localStorage authentication to a secure JWT/OAuth2 flow with a professional backend (PostgreSQL/MongoDB).
-
----
