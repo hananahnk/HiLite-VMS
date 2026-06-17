@@ -39,18 +39,18 @@ const Dashboard = ({ isDark, setIsDark }: PageProps) => {
 
   const filteredVisitors = useMemo(() => {
   return visitors.filter(v => {
-    // 1. Date filter
+
     const visitDate = dayjs(v.entryTime || v.scheduledTime);
     const matchesDate = !dateRange || 
       (visitDate.isSameOrAfter(dateRange[0], 'day') && visitDate.isSameOrBefore(dateRange[1], 'day'));
     
-    // 2. Name filter
+
     const matchesName = !searchText || v.visitorName?.toLowerCase().includes(searchText.toLowerCase());
     
-    // 3. Flat filter (ADD THIS!)
+  
     const matchesFlat = !flatFilter || v.flatNumber?.toString().includes(flatFilter);
 
-    // 4. Host filter (ADD THIS IF NEEDED!)
+
     const matchesHost = !hostFilter || v.hostName?.toLowerCase().includes(hostFilter.toLowerCase());
 
     return matchesDate && matchesName && matchesFlat && matchesHost;
@@ -64,18 +64,18 @@ const Dashboard = ({ isDark, setIsDark }: PageProps) => {
 
   const handleStatusChange = async (id: string, status: string) => {
     try {
-    // Create the payload object
+
       const payload: any = { status };
 
-    // If status is approved, add current timestamp as entryTime
+ 
       if (status === 'approved') {
         payload.entryTime = new Date().toISOString();
       }
 
-    // Patch the update
+
       await api.patch(`/visitors/${id}`, payload);
     
-    // Refresh the table
+ 
       await fetchVisitors();
     } catch (err) {
       console.error("Status update failed:", err);
