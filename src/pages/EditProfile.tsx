@@ -1,4 +1,4 @@
-import { Form, Input, Button, Card, Typography, message, App, Switch } from 'antd'; // Import App
+import { Form, Input, Button, Card, Typography, message, App, Switch } from 'antd'; 
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { SunOutlined, MoonOutlined } from '@ant-design/icons';
@@ -10,12 +10,12 @@ interface PageProps {
 }
 
 const EditProfile = ({ isDark, setIsDark }: PageProps) => {
-  const { message } = App.useApp(); // Use the hook instead of the static import
+  const { message } = App.useApp();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   const onFinish = async (values: any) => {
-    // Check if ID exists before calling API
+
     if (!user.id) {
       message.error('User ID not found. Please log in again.');
       return;
@@ -41,7 +41,7 @@ const EditProfile = ({ isDark, setIsDark }: PageProps) => {
       message.success('Profile updated!');
       navigate(-1);
     } catch (err: any) {
-      console.error("API Error:", err.response?.status); // Log the status to help debug 404s
+      console.error("API Error:", err.response?.status); 
       message.error('Failed to update profile.');
     }
   };
@@ -58,20 +58,20 @@ const EditProfile = ({ isDark, setIsDark }: PageProps) => {
       
       <div className="login-content-wrapper">
         <img src="/logo.png" alt="Logo" style={{ width: '120px', marginBottom: '10px' }} />
-        {/* Use a simple Title and let CSS handle the color */}
+     
         <Title level={2} style={{ marginBottom: '40px', color: 'inherit' }}>
           Edit Profile
         </Title>
     
         <Card className="login-card">
           <Form initialValues={user} onFinish={onFinish} layout="vertical">
-            {/* Common Fields for Everyone */}
+       
             <Form.Item name="username" label="Username"><Input /></Form.Item>
             <Form.Item name="password" label="Password"><Input.Password /></Form.Item>
             <Form.Item name="fullName" label="Full Name"><Input /></Form.Item>
             <Form.Item name="contactNumber" label="Phone" rules={[phoneRule]}><Input /></Form.Item>
             
-            {/* Role-Specific Fields */}
+
             {user.role === 'resident' && (
               <Form.Item name="flatNumber" label="Flat Number"><Input /></Form.Item>
             )}
