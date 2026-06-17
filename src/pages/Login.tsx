@@ -91,7 +91,7 @@ const LoginContent = ({ isDark, setIsDark }: PageProps) => {
             initialValue="resident" // This ensures the form has a default value
             rules={[{ required: true }]}
           >
-            <Select>
+            <Select onChange={(value) => setRole(value)}>
               <Select.Option value="admin">Admin</Select.Option>
               <Select.Option value="security">Security</Select.Option>
               <Select.Option value="resident">Resident</Select.Option>
