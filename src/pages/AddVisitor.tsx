@@ -56,7 +56,6 @@ const AddVisitorModal = ({ isVisible, onClose, refreshData,visitors, editingVisi
       scheduledTime: values.scheduledTime.toISOString(),
       purpose: values.purpose === 'Other' ? values.otherPurpose : values.purpose,
       
-      // FIX: Ensure hostId is ALWAYS included, regardless of role
       hostId: selectedResident ? selectedResident.id : user.id,
       flatNumber: showHostFields ? values.flatNumber : user.flatNumber,
       hostName: showHostFields ? values.hostName : user.fullName,
@@ -68,7 +67,7 @@ const AddVisitorModal = ({ isVisible, onClose, refreshData,visitors, editingVisi
         await api.patch(`/visitors/${editingVisitor.id}`, payload);
         message.success('Visitor updated!');
       } else {
-      // Keep your ID generation logic
+
         const maxId = visitors.length > 0 ? Math.max(...visitors.map((v: any) => parseInt(v.id.replace('v', '')) || 0)) : 0;
         await api.post('/visitors', { ...payload, id: `v${maxId + 1}`, status: 'pending', entryTime: null });
         message.success('Visitor registered!');
