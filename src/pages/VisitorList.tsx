@@ -37,10 +37,10 @@ const VisitorTable = ({ visitors, refreshData ,onEdit,handleStatusChange, handle
     return;
   }
   
-  // 1. Calculate total minutes
+
   const totalMinutes = record.entryTime ? dayjs(exitTime).diff(dayjs(record.entryTime), 'minute') : 0;
   
-  // 2. Format into "Xh Ym"
+
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
   const formattedDuration = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
@@ -54,9 +54,7 @@ const VisitorTable = ({ visitors, refreshData ,onEdit,handleStatusChange, handle
   };
 
  
-  
 
-  // Helper for text filtering
   const getColumnSearchProps = (
     value: string, 
     setValue: (val: string) => void
