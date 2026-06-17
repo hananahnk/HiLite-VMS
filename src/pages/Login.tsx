@@ -19,25 +19,25 @@ const LoginContent = ({ isDark, setIsDark }: PageProps) => {
   const onFinish = async (values: any) => {
   try {
     if (isRegister) {
-      // Registration logic
+    
       await api.post('/users', { ...values, id: Date.now().toString() });
       messageApi.success('Registration successful!');
       setIsRegister(false);
     } else {
-      // Fetch users
+
       const { data } = await api.get('/users');
       
-      // Look for the user matching all form inputs
+
       const user = data.find((u: any) => 
         u.username === values.username && 
         u.password === values.password && 
-        u.role === values.role // Use the role from the form values directly!
+        u.role === values.role
       );
 
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
         
-        // Use a small timeout to ensure localStorage is written before redirecting
+      
         setTimeout(() => {
           if (user.role === 'admin') navigate('/admin');
           else if (user.role === 'security') navigate('/dashboard');
@@ -67,7 +67,7 @@ const LoginContent = ({ isDark, setIsDark }: PageProps) => {
       
       <div className="login-content-wrapper">
         <img src="/logo.png" alt="Logo" style={{ width: '120px', marginBottom: '10px' }} />
-        {/* Use a simple Title and let CSS handle the color */}
+      
         <Title level={2} style={{ marginBottom: '40px', color: 'inherit' }}>
           Visitor Management System
         </Title>
@@ -88,7 +88,7 @@ const LoginContent = ({ isDark, setIsDark }: PageProps) => {
           <Form.Item 
             name="role" 
             label="Role" 
-            initialValue="resident" // This ensures the form has a default value
+            initialValue="resident" 
             rules={[{ required: true }]}
           >
             <Select onChange={(value) => setRole(value)}>
