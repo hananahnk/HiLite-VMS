@@ -1,0 +1,61 @@
+:root {
+  --primary-blue: #1C2E5D;
+  --accent-gold: #C69214;
+  --bg-light: #f0f2f5;
+  --bg-dark: #141414;
+}
+
+/* 1. APP HEADER STYLE */
+.app-header {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: var(--primary-blue) !important;
+  padding: 0 20px !important;
+  height: 70px !important;
+  width: 100% !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Force equal column widths for perfect center alignment */
+.header-left { display: flex; align-items: center; width: 150px; justify-content: flex-start; }
+.header-center { 
+  flex: 1; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+.header-right { display: flex; align-items: center; width: 150px; justify-content: flex-end; gap: 10px; }
+
+.header-title { 
+  color: #fff !important; 
+  font-size: 2rem !important; 
+  font-weight: bold !important;
+  white-space: nowrap;
+}
+
+/* 2. LOGIN PAGE STYLES */
+.login-standalone {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--bg-light);
+  color: #000;
+}
+.login-standalone.dark { background-color: var(--bg-dark); color: #fff; }
+.login-content-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; }
+.theme-toggle-standalone { position: absolute; top: 20px; right: 20px; z-index: 1000; }
+
+
+.ant-table-thead > tr > th {
+  background-color: #1C2E5D !important; /* Blue background */
+  color: #C69214 !important;           /* Gold text */
+  text-align: center !important;       /* Center text */
+  font-weight: bold !important;
+}

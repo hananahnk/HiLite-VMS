@@ -1,0 +1,129 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin01",
+      "password": "123",
+      "role": "admin",
+      "fullName": "Admin User",
+      "designation": "Manager",
+      "contactNumber": "999888776"
+    },
+    {
+      "id": "2",
+      "username": "sec01",
+      "password": "123",
+      "role": "security",
+      "fullName": "Security Guard",
+      "contactNumber": "9998887772"
+    },
+    {
+      "id": "3",
+      "username": "res01",
+      "password": "123",
+      "role": "resident",
+      "fullName": "Sarah Johnson",
+      "flatNumber": "101",
+      "contactNumber": "5551234561"
+    },
+    {
+      "username": "asd",
+      "password": "asd",
+      "role": "resident",
+      "fullName": "asd",
+      "flatNumber": "102",
+      "contactNumber": "5551234567",
+      "id": "Js4BPvyNewE"
+    },
+    {
+      "username": "DD",
+      "password": "DD",
+      "role": "resident",
+      "fullName": "DDD",
+      "contactNumber": "4444444444",
+      "flatNumber": "101",
+      "id": "Kbep8yu2E4A"
+    }
+  ],
+  "visitors": [
+    {
+      "visitorName": "sd",
+      "visitorPhone": "5551234567",
+      "purpose": "Guest",
+      "flatNumber": "101",
+      "hostId": "3",
+      "hostName": "Sarah Johnson",
+      "hostPhone": "5551234567",
+      "id": "f770O6OdCfQ",
+      "status": "completed",
+      "entryTime": "2026-06-14T09:32:48.233Z",
+      "exitTime": "2026-06-14T12:24:41.359Z",
+      "duration": "171 mins"
+    },
+    {
+      "visitorName": "cc",
+      "visitorPhone": "5551234567",
+      "purpose": "Delivery",
+      "scheduledTime": "2026-06-14T12:24:11.800Z",
+      "flatNumber": "101",
+      "hostId": "3",
+      "hostName": "Sarah Johnson",
+      "hostPhone": "5551234567",
+      "id": "onQTh-F2BIY",
+      "status": "completed",
+      "entryTime": "2026-06-14T17:30:56.316Z",
+      "exitTime": "2026-06-14T17:31:00.302Z",
+      "duration": "0m"
+    },
+    {
+      "visitorName": "kk",
+      "visitorPhone": "3333333333",
+      "purpose": "Guest",
+      "scheduledTime": "2026-06-16T12:07:27.200Z",
+      "flatNumber": "101",
+      "hostId": "3",
+      "hostName": "Sarah Johnson",
+      "hostPhone": "5551234567",
+      "id": "T6ba-PfX20U",
+      "status": "rejected",
+      "entryTime": null
+    },
+    {
+      "visitorName": "vv",
+      "visitorPhone": "5555555555",
+      "purpose": "Maintenance",
+      "scheduledTime": "2026-06-16T15:19:02.300Z",
+      "flatNumber": "101",
+      "hostName": "Sarah Johnson",
+      "hostPhone": "5551234567",
+      "id": "j5RF1pfM9ok",
+      "status": "pending",
+      "entryTime": null
+    },
+    {
+      "visitorName": "FF",
+      "visitorPhone": "6666666666",
+      "purpose": "Delivery",
+      "scheduledTime": "2026-06-16T15:20:49.000Z",
+      "flatNumber": "101",
+      "hostName": "DD",
+      "hostPhone": "4444444444",
+      "id": "f4zizNR774g",
+      "status": "pending",
+      "entryTime": null
+    },
+    {
+      "visitorName": "WW",
+      "visitorPhone": "2222222222",
+      "purpose": "Guest",
+      "scheduledTime": "2026-06-16T15:23:41.700Z",
+      "flatNumber": "101",
+      "hostName": "DDD",
+      "hostPhone": "4444444444",
+      "id": "sc6id8j99jI",
+      "status": "pending",
+      "entryTime": null
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
