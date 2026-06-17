@@ -48,12 +48,16 @@ const AddVisitorModal = ({ isVisible, onClose, refreshData,visitors, editingVisi
 
   const handleFinish = async (values: any) => {
     try {
+      const selectedResident = showHostFields 
+        ? residents.find(r => r.fullName === values.hostName) 
+        : user;
       const payload = {
       ...values,
       scheduledTime: values.scheduledTime.toISOString(),
       purpose: values.purpose === 'Other' ? values.otherPurpose : values.purpose,
       
-      // Strict data assignment based on role
+      // FIX: Ensure hostId is ALWAYS included, regardless of role
+      hostId: selectedResident ? selectedResident.id : user.id,
       flatNumber: showHostFields ? values.flatNumber : user.flatNumber,
       hostName: showHostFields ? values.hostName : user.fullName,
       hostPhone: showHostFields ? values.hostPhone : user.contactNumber,

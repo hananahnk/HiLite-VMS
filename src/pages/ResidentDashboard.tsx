@@ -27,19 +27,18 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   const fetchMyVisitors = async () => {
-    const { data } = await api.get('/visitors');
-  
-    console.log("Current User ID:", user.id);
-
-  // Filter and log the result
-    const myVisitors = data.filter((v: any) => {
-      const matchById = v.hostId === user.id;
-      const matchByName = v.hostName === user.fullName;
+    try {
+      const { data } = await api.get('/visitors');
       
-      return matchById || matchByName;
-    });
-  
-    setVisitors(myVisitors);
+      // Strict filtering: Only use hostId. 
+      // Ensure user.id exists before filtering.
+      if (user && user.id) {
+        const myVisitors = data.filter((v: any) => v.hostId === user.id);
+        setVisitors(myVisitors);
+      }
+    } catch (err) {
+      console.error("Failed to fetch visitors:", err);
+    }
   };
 
   useEffect(() => { fetchMyVisitors(); }, []);
@@ -80,12 +79,15 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
   };
 
   const filteredVisitors = useMemo(() => {
+    if (!visitors || visitors.length === 0) return [];
     if (!dateRange) return visitors;
     const [start, end] = dateRange;
   
     return visitors.filter(v => {
-      const visitDate = dayjs(v.entryTime || v.scheduledTime);
-    // Check if visitDate is between start and end (inclusive)
+      const time = v.entryTime || v.scheduledTime;
+      if (!time) return true; 
+
+      const visitDate = dayjs(time);
       return visitDate.isSameOrAfter(start, 'day') && visitDate.isSameOrBefore(end, 'day');
     });
   }, [visitors, dateRange]);
@@ -148,7 +150,7 @@ const ResidentDashboard = ({ isDark, setIsDark }: PageProps) => {
         
 
         <Table 
-        dataSource={filteredVisitors} 
+        dataSource={filteredVisitors || []} 
         rowKey="id" 
         columns={[
           { title: 'Visitor', dataIndex: 'visitorName', align: 'center' },
