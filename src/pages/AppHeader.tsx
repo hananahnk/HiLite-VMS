@@ -7,16 +7,16 @@ export const AppHeader = ({ isDark, setIsDark }: any) => {
 
   return (
     <Layout.Header className="app-header">
-      {/* Left: Logo */}
+   
       <div className="header-left">
         <img src="/logo.png" alt="Logo" style={{ width: 45, marginRight: 15 }} />
       </div>
 
-      {/* Center: Title */}
+     
       <div className="header-center">
         <div className="header-title">Visitor Management System</div>
       </div>
-      {/* Right: Actions */}
+  
       <div className="header-actions">
         <Switch 
             checked={isDark} 
