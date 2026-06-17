@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ConfigProvider, theme, App } from 'antd'; // 1. Import App
+import { ConfigProvider, theme, App } from 'antd'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -8,7 +8,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import ResidentDashboard from './pages/ResidentDashboard';
 import EditProfile from './pages/EditProfile';
 
-function AppRoot() { // Rename your component to keep App for the wrapper
+function AppRoot() { 
   const [isDark, setIsDark] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function AppRoot() { // Rename your component to keep App for the wrapper
         token: { colorPrimary: '#1C2E5D' }
       }}
     >
-      <App> {/* 2. Wrap your entire router with App */}
+      <App> 
         <Router>
           <Routes>
             <Route path="/" element={<Login isDark={isDark} setIsDark={setIsDark} />} />
