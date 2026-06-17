@@ -52,12 +52,12 @@ const AdminDashboard = ({ isDark, setIsDark }: PageProps) => {
 
   const filteredVisitors = useMemo(() => {
     return visitors.filter(v => {
-    // 1. Updated Date Range Check
+   
       const visitDate = dayjs(v.entryTime || v.scheduledTime);
       const matchesDate = !dateRange || 
         (visitDate.isSameOrAfter(dateRange[0], 'day') && visitDate.isSameOrBefore(dateRange[1], 'day'));
 
-    // 2. Existing Filters
+
       const matchesVisitor = v.visitorName?.toLowerCase().includes(visitorNameFilter.toLowerCase());
       const matchesHost = v.hostName?.toLowerCase().includes(hostNameFilter.toLowerCase());
       const matchesFlat = v.flatNumber?.toString().includes(flatNumberFilter);
@@ -131,7 +131,7 @@ const AdminDashboard = ({ isDark, setIsDark }: PageProps) => {
               />
           </div>    
 
-        {/* Read-Only Table */}
+    
         <Table 
           dataSource={filteredVisitors} 
           rowKey="id" 
